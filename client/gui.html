@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/gui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.6.4/fabric.min.js"></script>
+    <script src="js/sha256.min.js"></script>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <div class="header"><span class="startbutton"><i class="material-icons">apps</i></span><span id="fuchsiachat" onclick="newapp('fuchsiachat');" class="baritem"><i class="material-icons">chat</i><span class="baritemtext">FuchsiaChat</span></span></span>
+      <div class="appwindow" id="fuchsiachatapp">
+        <div class="apptop"><div onclick="$('#fuchsiachatapp').remove();" class="redbutton"></div><div class="yellowbutton"></div><div class="greenbutton"></div>FuchsiaChat</div>
+        <iframe class="iframewindow" src="./index.html"></iframe>
+      </div>
+    </div>
+    <script>
+      function boot() {
+        $(".app").append("Uncompressing Linux... done, booting the kernel.<br>").delay( 1000 ).append("[    0.000000] Booting Linux on physical CPU 0x0<br>").delay( 500 ).append("[    0.000000] Initializing cgroup subsys cpu<br>").delay( 500 ).append("[    0.000000] Initializing cgroup subsys cpuacct<br>").delay( 300 ).append("[    0.000000] Linux version 3.18.10+ (dc4@dc4-XPS13-9333) (gcc version 4.8.3 20140303 (prerelease) (crosstool-NG linaro-1.13.1+bzr2650 - Linaro GCC 2014.03)) #775 PREEMPT Thu Apr 2 18:10:12 BST 2015<br>").delay( 300 ).append("[    0.000000] Booting Linux on physical CPU 0x0<br>").delay( 500 ).append("[    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d<br>[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache<br>").delay( 500 );
+      }
+      function show() {
+        $(".app").css("background-image", "url('./bg.jpg')");
+        $(".header").fadeIn()
+        $(".appwindow").fadeIn()
+        $( function() {
+          $( ".appwindow" ).draggable();
+        } );
+        function genid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 5; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+        function newapp(app) {
+          if (app == "fuchsiachat") {
+            var id = genid();
+            $('.app').append('<div class="appwindow" id="'+id+'"><div class="apptop"><div onclick="$('+"'#"+id+"'"+').remove();" class="redbutton"></div><div class="yellowbutton"></div><div class="greenbutton"></div>FuchsiaChat</div><iframe class="iframewindow" src="./index.html"></iframe></div>');
+            $( "#"+id ).draggable();
+          }
+        }
+      }
+    </script>
+    <!--<script src="js/core.js"></script>-->
+  </body>
+</html>
